@@ -1,7 +1,7 @@
 module BotCommand
   # command subject
   class Subject < Base
-    include Helper::Labs
+    include Helper::Validators
 
     def should_start?
       text == "/subject"
@@ -13,9 +13,11 @@ module BotCommand
     end
 
     def add_subject
-      send_message("Сколько лаб надо сдать?")
-      user.next_bot_command.update(class: self.class, method: :add_labs, data: { subject: text })
-      user.subjects.update(text => [] | old_labs)
+      valid_subject? do
+        send_message("Сколько лаб надо сдать?")
+        user.next_bot_command.update(class: self.class, method: :add_labs, data: { subject: text })
+        user.subjects.update(text => [] | old_labs)
+      end
     end
 
     def add_labs
