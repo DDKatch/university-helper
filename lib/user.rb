@@ -1,6 +1,3 @@
-require "./environment"
-
-include Environment
 # describe user and actions with him
 class User
   attr_reader :id
@@ -36,12 +33,12 @@ class User
   end
 
   def self.find_by(id)
-    user = Environment.redis.get(id.to_s)
+    user = Config.database.get(id.to_s)
     user.nil? ? nil : YAML.load(user)
   end
 
   def save
-    Environment.redis.set(id.to_s, YAML.dump(self))
+    Config.database.set(id.to_s, YAML.dump(self))
   end
 
   def reset_next_bot_command

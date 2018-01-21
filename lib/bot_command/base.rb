@@ -1,7 +1,5 @@
 require "telegram/bot"
 
-include Environment
-
 module BotCommand
   # base command class
   class Base
@@ -10,7 +8,7 @@ module BotCommand
     def initialize(user, message)
       @user = user
       @message = message
-      @api = ::Telegram::Bot::Api.new(Environment.token)
+      @api = ::Telegram::Bot::Api.new(Config.token)
     end
 
     def should_start?
