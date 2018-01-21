@@ -22,11 +22,8 @@ class TelegramBot
   end
 
   def from
-    if @webhook_message["callback_query"].nil?
-      @webhook_message["message"]["from"]
-    else
-      @webhook_message["callback_query"]["from"]
-    end
+    message_types = %w( callback_query edited_message message  )
+    @webhook_message[ (@webhook_message.keys & message_types).first ]['from'] 
   end
 
   def user
