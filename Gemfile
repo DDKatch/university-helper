@@ -6,3 +6,5 @@ gem "pry"
 gem "redis-rack"
 gem "redis"
 gem "cucumber"
+
+gem 'dotenv', groups: [:development, :test]

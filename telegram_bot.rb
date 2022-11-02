@@ -1,3 +1,5 @@
+require 'dotenv/load'
+
 require_relative "lib/user"
 require_relative "lib/bot_message_dispatcher"
 #require "./environment"
