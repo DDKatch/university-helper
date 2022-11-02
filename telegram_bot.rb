@@ -1,6 +1,6 @@
 require_relative "lib/user"
 require_relative "lib/bot_message_dispatcher"
-require "./environment"
+#require "./environment"
 require "yaml"
 require "json"
 require "pry"

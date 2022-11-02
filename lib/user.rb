@@ -38,6 +38,7 @@ class User
   end
 
   def save
+    puts self.to_s
     Config.database.set(id.to_s, YAML.dump(self))
   end
 
